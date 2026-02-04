@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
-import { HiArrowDown, HiCode, HiSparkles } from 'react-icons/hi'
+import { HiArrowDown, HiCode, HiSparkles, HiDownload } from 'react-icons/hi'
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
 
 const Hero = () => {
+    // ... existing variants ...
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -135,6 +136,16 @@ const Hero = () => {
                             whileTap={{ scale: 0.95 }}
                         >
                             Get In Touch
+                        </motion.a>
+                        <motion.a
+                            href="/resume.pdf"
+                            download="Kaustubh_Shinde_Resume.pdf"
+                            className="px-8 py-4 rounded-full font-semibold glass-card text-slate-700 hover:shadow-lg transition-all duration-300 flex items-center gap-2"
+                            whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.9)' }}
+                            whileTap={{ scale: 0.95 }}
+                        >
+                            <HiDownload className="w-5 h-5" />
+                            Download CV
                         </motion.a>
                     </motion.div>
 

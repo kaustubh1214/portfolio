@@ -31,16 +31,23 @@ const Contact = () => {
             // EmailJS configuration
             // Service ID, Template ID, and Public Key need to be set up in EmailJS dashboard
             await emailjs.send(
-                'service_3zvd22n', // Your EmailJS Service ID
-                'template_kvcmsq6', // Your EmailJS Template ID
+                'service_3zvd22n',
+                'template_kvcmsq6',
                 {
                     from_name: formData.name,
-                    from_email: formData.email,
-                    subject: formData.subject,
-                    message: formData.message,
                     to_name: 'Kaustubh Shinde',
+                    from_email: formData.email,
+                    to_email: 'kpshinde2003@gmail.com',
+                    message: formData.message,
+                    subject: formData.subject,
+                    time: new Date().toLocaleString(),
+                    // Redundant keys to ensure compatibility with different template naming conventions
+                    name: formData.name,
+                    email: formData.email,
+                    reply_to: formData.email,
+                    date: new Date().toLocaleString(), // Adding date just in case
                 },
-                'AolFTXouYJTfTkiQK' // Your EmailJS Public Key
+                'AolFTXouYJTfTkiQK'
             )
 
             setStatus({

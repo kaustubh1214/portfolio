@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -10,6 +11,14 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 
 function App() {
+  useEffect(() => {
+    // Clear hash and scroll to top on refresh
+    if (window.location.hash) {
+      window.history.replaceState(null, document.title, window.location.pathname);
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="relative">
       {/* Animated Background */}
