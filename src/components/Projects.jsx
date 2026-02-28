@@ -1,7 +1,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
-import { HiExternalLink, HiCode, HiSparkles, HiStar, HiArrowRight } from 'react-icons/hi'
-import { SiReact, SiNodedotjs, SiFastapi, SiMongodb, SiWordpress, SiShopify } from 'react-icons/si'
+import { HiExternalLink, HiCode, HiSparkles, HiStar, HiArrowRight, HiDownload } from 'react-icons/hi'
+import { SiReact, SiNodedotjs, SiFastapi, SiMongodb, SiWordpress, SiShopify, SiFlutter, SiSqlite, SiSupabase } from 'react-icons/si'
 
 const projects = [
     {
@@ -84,6 +84,28 @@ const projects = [
         ],
         featured: false,
         demoUrl: '#',
+    },
+    {
+        id: 5,
+        title: 'Kash Flow',
+        subtitle: 'Personal Expense Tracker App',
+        description: 'A mobile application built to easily track daily expenses locally. Features include intuitive charts for data visualization, CSV export functionality, and secure authentication originally using Supabase, now migrated to local SQLite for complete data privacy.',
+        image: null,
+        gradient: 'from-blue-500 via-indigo-500 to-cyan-500',
+        technologies: [
+            { name: 'Flutter', icon: SiFlutter },
+            { name: 'SQLite', icon: SiSqlite },
+            { name: 'Supabase', icon: SiSupabase },
+        ],
+        features: [
+            'Local expense tracking',
+            'Data visualization with charts',
+            'Export data to CSV',
+            'Fully local storage',
+        ],
+        featured: false,
+        demoUrl: '#',
+        downloadUrl: '/KashFlow.apk',
     },
 ]
 
@@ -207,6 +229,18 @@ const ProjectCard = ({ project, index, isInView }) => {
                                             Source Code
                                         </motion.a>
                                     )}
+                                    {project.downloadUrl && (
+                                        <motion.a
+                                            href={project.downloadUrl}
+                                            download
+                                            className="px-6 py-3 rounded-full glass-card text-slate-700 font-semibold flex items-center gap-2 text-sm hover:shadow-lg transition-all"
+                                            whileHover={{ scale: 1.05 }}
+                                            whileTap={{ scale: 0.95 }}
+                                        >
+                                            <HiDownload className="w-4 h-4" />
+                                            Download APK
+                                        </motion.a>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -283,14 +317,27 @@ const ProjectCard = ({ project, index, isInView }) => {
                     </ul>
 
                     {/* Action */}
-                    <motion.a
-                        href={project.demoUrl}
-                        className="inline-flex items-center gap-2 text-sm font-semibold text-violet-600 hover:text-violet-700 transition-colors group/link"
-                        whileHover={{ x: 5 }}
-                    >
-                        View Project
-                        <HiArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
-                    </motion.a>
+                    <div className="flex items-center gap-4">
+                        <motion.a
+                            href={project.demoUrl}
+                            className="inline-flex items-center gap-2 text-sm font-semibold text-violet-600 hover:text-violet-700 transition-colors group/link"
+                            whileHover={{ x: 5 }}
+                        >
+                            View Project
+                            <HiArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+                        </motion.a>
+                        {project.downloadUrl && (
+                            <motion.a
+                                href={project.downloadUrl}
+                                download
+                                className="inline-flex items-center gap-2 text-sm font-semibold text-violet-600 hover:text-violet-700 transition-colors group/link"
+                                whileHover={{ x: 5 }}
+                            >
+                                Download APK
+                                <HiDownload className="w-4 h-4 transition-transform group-hover/link:-translate-y-1" />
+                            </motion.a>
+                        )}
+                    </div>
                 </div>
             </motion.div>
         </motion.div>
